@@ -9,6 +9,10 @@ import Rectangle1216 from "../assets/Rectangle 1216.png";
 import Rectangle1224 from "../assets/Rectangle 1224.png";
 import Rectangle1217 from "../assets/Rectangle 1217.jpg";
 import Newlogo from "./newlogo.svg";
+import Viewpast from '../assets/vwpst.jpg';
+import Breast from '../assets/brst.jpg';
+
+import Pp3 from '../assets/pp3.jpg';
 
 export {
   image3,
@@ -16,6 +20,10 @@ export {
   image18,
   image19,
   Navy,
+  Pp3,
+
+  Breast,
+  Viewpast,
   Rectangle1215,
   Rectangle1224,
   Rectangle1216,

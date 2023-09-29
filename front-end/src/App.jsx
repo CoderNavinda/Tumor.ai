@@ -10,7 +10,8 @@ import Login from './pages/login';
 import {Uploadmri}   from './pages/uploadmri';
 import { fetchData } from './utils/get';
 import Register from './pages/register';
-import {Dashboard} from './pages/dashboard';
+import Dashboard from './pages/Dashboard';
+
 import Forum from './pages/forum';
 import axios from 'axios';
 import Results from './pages/results';
@@ -19,6 +20,7 @@ import History from './pages/history';
 import {BreastCancer} from './pages/uploadimage';
 import Profile from './pages/profile';
 import Braintumor from './pages/braintumor';
+import PrivateRoute from './components/PrivateRoute';
 function App() {
 
   const LayoutWithNavbar = () => (
@@ -59,7 +61,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/*" element={<NoPage />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route exact path='/dashboard' element={<PrivateRoute/>}>
+            <Route exact path='/dashboard' element={<Dashboard/>}/>
+          </Route>
       <Route path="/forum" element={<Forum />} />
       <Route path="/results" element={<Results />} />
       <Route path="/question" element={<Question />} />

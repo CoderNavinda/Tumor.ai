@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./aboutus.css";
+import { Navbar } from "../components/Navbar/navbar";
 import rectangle1195 from '../assets/Rectangle 1195.png';
 import img5 from '../assets/img 5.png';
 import image2 from '../assets/image 2.png';

@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import './ContactUs.css';
 import rectangle1190 from '../assets/Rectangle 1190.png'
-
+import { Navbar } from '../components/Navbar/navbar';
 import { Link } from "react-router-dom";
 
 
 export const ContactUs = () => {
   return (
-      <div >
-        <img src={rectangle1190} alt="Contact Us" className='image-container'/>
-      
-            
-      <div className="div">
-       
-        
-        <div className="group">
-            
-          <div className="overlap-group">
-         
-          <div className='forum-1'>
+    <div className='contact-us'>
+       <img src={rectangle1190} alt="Contact Us" className='image-container'/>
+    <div className='forum-1'>
         <h1>Contact Us</h1>
         <form>
             <label>Name</label>
@@ -32,11 +23,7 @@ export const ContactUs = () => {
             <input type ='submit' value='Send' className='sub-11'/>
         </form>
         </div>  
-          </div>
         </div>
-   
-      </div>
-    </div>
   );
 };
 
