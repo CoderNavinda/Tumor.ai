@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from dependencies import *
-from unet import *
+# from dependencies import *
+# from unet import *
 from dbserver import *
 from pymongo import MongoClient
 from PIL import Image
@@ -9,16 +9,23 @@ import os
 import numpy as np
 import tensorflow as tf
 from keras.models import model_from_json
+from email.mime.text import MIMEText
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from routes.contactus import contactus_bp 
+from routes.upload import upload_bp
 
 app = Flask(__name__)
 CORS(app,supports_credentials=True)
 
+app.register_blueprint(contactus_bp)
+app.register_blueprint(upload_bp)
 
 
 #initializing MongoDb Database
 mongo_uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6"
 client = MongoClient(mongo_uri)
-
 
 
 #for segmentation
@@ -28,99 +35,170 @@ segment_model = None
 path = "./model_state_dict.pt"
 data_transforms = None
 
-#skin cancer
-model =None
-
-def load_model():
-    global model
-    # Load the model architecture from the JSON file
-    with open('resnet.json', 'r') as json_file:
-        json_model = json_file.read()
-    # Create the model
-    model = model_from_json(json_model)
-    # Load the weights from the H5 file
-    model.load_weights('resnet50.h5')
 
 
-def preprocess_image(image):
-    image=image.resize((224,224))
-    image=np.array(image)
-    image = image[:,:,::-1]
-    image =np.expand_dims(image, axis=0)
-    return image
+# #skin cancer
+# model =None
+
+# def load_model():
+#     global model
+#     # Load the model architecture from the JSON file
+#     with open('resnet.json', 'r') as json_file:
+#         json_model = json_file.read()
+#     # Create the model
+#     model = model_from_json(json_model)
+#     # Load the weights from the H5 file
+#     model.load_weights('resnet50.h5')
 
 
-@app.route('/skincancer', methods=['GET', 'POST'])
-def upload_skin_predict():
-    if request.method=='POST':
-        image_file = request.files['image']
-        if image_file:
-            image_location = os.path.join("./static",image_file.filename) 
-            image_file.save(image_location) 
-
-            image = Image.open(image_file)
-            image = preprocess_image(image)
-            prediction = model.predict(image)
-            if prediction[0][0] > 0.5:
-                result = 'Malignant'
-            else:
-                result = 'Benign'
-        return render_template('skincancer.html', result=result,image_loc =image_location)
-    return render_template('skincancer.html')
+# def preprocess_image(image):
+#     image=image.resize((224,224))
+#     image=np.array(image)
+#     image = image[:,:,::-1]
+#     image =np.expand_dims(image, axis=0)
+#     return image
 
 
+# @app.route('/skincancer', methods=['GET', 'POST'])
+# def upload_skin_predict():
+#     if request.method=='POST':
+#         image_file = request.files['image']
+#         if image_file:
+#             image_location = os.path.join("./static",image_file.filename) 
+#             image_file.save(image_location) 
 
-
-
-#InsertHistory(client,{'user_id':'test','scan_no':1 , 'date':'2021-09-01',  'report_id':'seg01'})
+#             image = Image.open(image_file)
+#             image = preprocess_image(image)
+#             prediction = model.predict(image)
+#             if prediction[0][0] > 0.5:
+#                 result = 'Malignant'
+#             else:
+#                 result = 'Benign'
+#         return render_template('skincancer.html', result=result,image_loc =image_location)
+#     return render_template('skincancer.html')
 
 
 
 
 
-#for segmentation
-def image_loader(loader, image_name):
-    image = Image.open(image_name)
-    image = loader(image).float()
-    image = torch.tensor(image, requires_grad=False)
-    image = image.unsqueeze(0)
-    new_tensor = image.clone()
+# #InsertHistory(client,{'user_id':'test','scan_no':1 , 'date':'2021-09-01',  'report_id':'seg01'})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# #for segmentation
+# def image_loader(loader, image_name):
+#     image = Image.open(image_name)
+#     image = loader(image).float()
+#     image = torch.tensor(image, requires_grad=False)
+#     image = image.unsqueeze(0)
+#     new_tensor = image.clone()
     
-    return new_tensor
+#     return new_tensor
 
-def process_image(data_transforms, path_name, image_name, filemodel):
-    with torch.no_grad():
-        img = image_loader(data_transforms, path_name)
-        pred = segment_model(img)
-        plt.subplot(1,2,1)                      #original image 
-        plt.imshow(np.squeeze(img.cpu().numpy()).transpose(1,2,0))
-        plt.title('Original Image')
+# def process_image(data_transforms, path_name, image_name, filemodel):
+#     with torch.no_grad():
+#         img = image_loader(data_transforms, path_name)
+#         pred = segment_model(img)
+#         plt.subplot(1,2,1)                      #original image 
+#         plt.imshow(np.squeeze(img.cpu().numpy()).transpose(1,2,0))
+#         plt.title('Original Image')
 
-        plt.subplot(1,2,2)                      #segmented image
-        plt.imshow(np.squeeze(pred.cpu()) > .5)
-        plt.title('Tumour Prediction')
-        plt.savefig("%s/%s-SEGMENTED.png" % (upload_folder, image_name), bbox_inches = "tight")
+#         plt.subplot(1,2,2)                      #segmented image
+#         plt.imshow(np.squeeze(pred.cpu()) > .5)
+#         plt.title('Tumour Prediction')
+#         plt.savefig("%s/%s-SEGMENTED.png" % (upload_folder, image_name), bbox_inches = "tight")
 
 
-@app.route("/braintumor", methods=["GET", "POST"])
-def upload_predict():
-    if request.method == "POST":
-        image_file = request.files["image"]
-        if image_file:                                                          #if an image was recieved
-            image_location = os.path.join(upload_folder,image_file.filename)    #go to ./static folder 
-            image_file.save(image_location)                                     #save the image in ./static folder
+# @app.route("/braintumor", methods=["GET", "POST"])
+# def upload_predict():
+#     if request.method == "POST":
+#         image_file = request.files["image"]
+#         if image_file:                                                          #if an image was recieved
+#             image_location = os.path.join(upload_folder,image_file.filename)    #go to ./static folder 
+#             image_file.save(image_location)                                     #save the image in ./static folder
 
-            image_name = os.path.basename(image_location)  #to get only the path name     
-            image_name = image_name.split('.')[0]       #name of image without file extension
+#             image_name = os.path.basename(image_location)  #to get only the path name     
+#             image_name = image_name.split('.')[0]       #name of image without file extension
             
-            #calling for segmentation
-            process_image(data_transforms, image_location, image_name, segment_model)
-            #calling for classification
-            #predicted_tumor = model_predict(image_location, classifier_model)
+#             #calling for segmentation
+#             process_image(data_transforms, image_location, image_name, segment_model)
+#             #calling for classification
+#             #predicted_tumor = model_predict(image_location, classifier_model)
 
-            return render_template("braintumor.html", image_loc = ("%s-SEGMENTED.png" % image_name))
+#             return render_template("braintumor.html", image_loc = ("%s-SEGMENTED.png" % image_name))
             
-    return render_template("braintumor.html", prediction=0, image_loc=None)
+#     return render_template("braintumor.html", prediction=0, image_loc=None)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -160,15 +238,15 @@ def home():
     return render_template('index.html')
 
 if __name__ == "__main__":
-    segment_model = UNet().to(device)   #loading the whole model architecture
-    segment_model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))   #loading the pre trained weights
+    # segment_model = UNet().to(device)   #loading the whole model architecture
+    # segment_model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))   #loading the pre trained weights
 
-    segment_model.eval()    #switch the model from training mode to evaluation mode
+    # segment_model.eval()    #switch the model from training mode to evaluation mode
 
-    data_transforms = transforms.Compose([transforms.Resize(256),transforms.ToTensor()])
+    # data_transforms = transforms.Compose([transforms.Resize(256),transforms.ToTensor()])
 
 
-    load_model() #skin cancer detection
+    # load_model() #skin cancer detection
     app.run(host="0.0.0.0", port=12000, debug=True)
 
 

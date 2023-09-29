@@ -2,3 +2,5 @@ venv/
 *.pt
 *.pth
 *.h5
+*.json
+*.jpg

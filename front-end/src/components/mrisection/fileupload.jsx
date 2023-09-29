@@ -29,8 +29,8 @@ export default function InputFileUpload() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="white"
+            strokeWidth={0}
+            stroke="none"
           >
             <path
               strokeLinecap="round"
@@ -40,7 +40,7 @@ export default function InputFileUpload() {
           </svg>
         </SvgIcon>
       }
-      style={{ color : 'white' }}
+      style={{ color : 'white' , width: '367px', borderRadius: '25px',height: '10px', justifyContent: 'center', background: 'linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%)'}}
     >
       Upload a file
       <VisuallyHiddenInput type="file" />

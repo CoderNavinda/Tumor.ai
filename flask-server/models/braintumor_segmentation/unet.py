@@ -1,4 +1,4 @@
-from dependencies import *
+from .dependencies import *
 
 def conv_layer(input_channels, output_channels):  
     conv = nn.Sequential(

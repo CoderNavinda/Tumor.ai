@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import axios from 'axios'; 
 import './drop-file-input.css';
 
 import { ImageConfig } from '../../assets/index'; 
@@ -24,15 +24,37 @@ const DropFileInput = props => {
             const updatedList = [...fileList, newFile];
             setFileList(updatedList);
             props.onFileChange(updatedList);
+            sendFileToBackend(newFile);
         }
+        
     }
 
-    const fileRemove = (file) => {
-        const updatedList = [...fileList];
-        updatedList.splice(fileList.indexOf(file), 1);
-        setFileList(updatedList);
-        props.onFileChange(updatedList);
+    const sendFileToBackend = (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        // Replace 'YOUR_BACKEND_API_URL' with the actual URL of your Flask backend
+        axios.post('http://127.0.0.1:12000/api/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        .then((response) => {
+            // Handle the response from the backend (e.g., display a success message)
+            console.log('File uploaded successfully', response.data);
+        })
+        .catch((error) => {
+            // Handle any errors that occurred during the upload
+            console.error('Error uploading file', error);
+        });
     }
+
+    // const fileRemove = (file) => {
+    //     const updatedList = [...fileList];
+    //     updatedList.splice(fileList.indexOf(file), 1);
+    //     setFileList(updatedList);
+    //     props.onFileChange(updatedList);
+    // }
 
     return (
         <>
