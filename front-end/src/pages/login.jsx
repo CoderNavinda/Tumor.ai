@@ -17,16 +17,25 @@ function Login() {
  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
-
   const auth = getAuth(firebaseApp);
+  const handleLoginBackend = async (email, password) => {
+    try {
+      const response = await axios.post('http://127.0.0.1:12000/login', {
+        email: email,
+        password: password,
+      });
+      // Handle the response (e.g., store session data on success)
+    } catch (error) {
+      // Handle login error (e.g., display an error message)
+    }
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      handleLoginBackend(email, password);
       console.log('User logged in:', user);
       navigate('/dashboard', { replace: true });
     } catch (error) {

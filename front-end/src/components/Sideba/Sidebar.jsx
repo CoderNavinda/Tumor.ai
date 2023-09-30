@@ -7,12 +7,14 @@ import { getAuth } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged,signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'; 
+import axios from 'axios';
 
 
 export const  Sidebar=()=> {
   const auth = getAuth(firebaseApp);
   const navigate=useNavigate();
   const [authUser,setAuthUser]=useState(null);
+
   useEffect(()=>{
       const listen =onAuthStateChanged(auth,(user)=>{
               if (user){
@@ -25,9 +27,20 @@ export const  Sidebar=()=> {
           listen();
       }
   },[]);
+  
+  const userSignOutBackend =()=>{
+
+ 
+        
+        axios.get('http://127.0.0.1:12000/logout')
+      
+
+.catch(error=> console.log(error))};
+
   const userSignOut =()=>{
       signOut(auth).then(()=>{
           console.log('sign out')
+          userSignOutBackend();
           alert('You have successfully logged out')
           navigate('/')
 

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template,session
 from flask_cors import CORS
 # from dependencies import *
 # from unet import *
@@ -22,7 +22,7 @@ CORS(app,supports_credentials=True)
 app.register_blueprint(contactus_bp)
 app.register_blueprint(upload_bp)
 
-
+app.secret_key='braintumor'
 #initializing MongoDb Database
 mongo_uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6"
 client = MongoClient(mongo_uri)
@@ -230,7 +230,21 @@ def profile_page(user_id):
             return jsonify({'message': 'User not found'}), 404
         
 
-
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+# Create a session (you can use Flask-Session or Flask-Login for more advanced sessions)
+    session['user'] = email
+    # print(session['user'])
+    return jsonify({'message': 'Login successful'}), 200
+    
+@app.route('/logout', methods=['GET'])
+def logout():
+    # Remove the username from the session (logout)
+    session.pop('user', None)
+    return jsonify({'message': 'Logout successful'}), 200
 
 
 @app.route("/", methods=["GET", "POST"])
