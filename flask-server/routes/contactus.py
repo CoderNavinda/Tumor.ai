@@ -10,8 +10,8 @@ contactus_bp = Blueprint('contactus', __name__)
 
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
-smtp_username = 'sithnavin@gmail.com'
-smtp_password = 'mbil yntd zxeb cigc'
+smtp_username = 'REPLACE'
+smtp_password = 'REPLACE'
 subject = "Response to Your Inquiry from Tumor.ai"
 
 # Define route handlers for /api/contactus
