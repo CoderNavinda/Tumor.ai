@@ -11,7 +11,8 @@ import {Uploadmri}   from './pages/uploadmri';
 import { fetchData } from './utils/get';
 import Register from './pages/register';
 import Dashboard from './pages/Dashboard';
-
+import { getAuth, setPersistence,browserSessionPersistence} from 'firebase/auth';
+import {firebaseApp} from '../src/firebase';
 import Forum from './pages/forum';
 import axios from 'axios';
 import Results from './pages/results';
@@ -31,7 +32,14 @@ function App() {
   );
 
   const [data, setData] = useState([]);
-
+  const auth = getAuth(firebaseApp);
+  const [user, setUser] = useState(null);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
+  // }, []);
+  setPersistence(auth, browserSessionPersistence);
   useEffect(() => {
     fetchData()
       .then(data => {

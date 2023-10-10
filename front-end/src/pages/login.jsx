@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './login.css';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword ,onAuthStateChanged,setPersistence,browserSessionPersistence} from 'firebase/auth';
 import {firebaseApp} from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -18,6 +18,13 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const auth = getAuth(firebaseApp);
+  setPersistence(auth, browserSessionPersistence);
+  const [user, setUser] = useState(null);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
+  // }, []);
   const handleLoginBackend = async (email, password) => {
     try {
       const response = await axios.post('http://127.0.0.1:12000/login', {
