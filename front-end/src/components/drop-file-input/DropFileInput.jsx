@@ -11,7 +11,7 @@ const DropFileInput = props => {
     const wrapperRef = useRef(null);
 
     const [fileList, setFileList] = useState([]);
-
+    const [uploadedImage, setUploadedImage] = useState(null);
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
@@ -42,6 +42,10 @@ const DropFileInput = props => {
         .then((response) => {
             // Handle the response from the backend (e.g., display a success message)
             console.log('File uploaded successfully', response.data);
+            const segmentedImagePath = response.data['segmented_image_path'];
+            console.log('Segmented image path:', segmentedImagePath);
+            setUploadedImage(segmentedImagePath);
+            props.onFileChange(segmentedImagePath);
         })
         .catch((error) => {
             // Handle any errors that occurred during the upload

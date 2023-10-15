@@ -42,7 +42,9 @@ export const  Sidebar=()=> {
           console.log('sign out')
           userSignOutBackend();
           alert('You have successfully logged out')
+          
           navigate('/')
+        
 
       }).catch(error=> console.log(error))};
 

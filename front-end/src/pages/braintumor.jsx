@@ -6,21 +6,22 @@ import { Button } from '@mui/base/Button';
 import InputFileUpload from '../components/mrisection/fileupload';
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import ResultModal from '../components/mrisection/resultModal';
 function Braintumor() {
   const containerStyle = {
-    backgroundColor: '#F3F3FD',
-    width: '100%',
-    height: '100vh',
+    position: 'absolute',
+    left: '5vw',
+    top: '1vh', // 10% of the viewport width
+    backgroundColor: '#FFFFFF',
+    width: '90vw', // 80% width of the viewport
+    height: '99vh',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundSize: '100% 100%',
-    backgroundImage:
-      'linear-gradient(-45deg, yellow 0%, yellow 25%, yellow 51%, #ff357f 100%)',
-    WebkitAnimation: 'AnimateBG 20s ease infinite',
-    animation: 'AnimateBG 20s ease infinite',
+    overflowX: 'auto',
+    boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.05)', // Add a drop shadow
   };
+  
   const colStyle1 = {
     fontFamily: 'Montserrat',
     fontSize: '46px',
@@ -40,7 +41,7 @@ function Braintumor() {
     justifyContent : 'center'
   };
   const colStyle2 = {
-    width: '90vw',
+    width: '80vw',
     fontFamily: 'Montserrat',
     fontSize: '26px',
     fontStyle: 'normal',
@@ -67,12 +68,28 @@ function Braintumor() {
     flexDirection: 'column',
     gap: '5px',
   };
+  const buttonstyle1 = {
+    alignSelf: 'center',
+    borderRadius: '25px',
+    color: 'white',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    width: '400px',
+    height : '40px',
+    fontWeight: '500',
+    lineHeight: 'normal',
+    position: 'static',
+    background: 'linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%)',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  };
+  
   
   const onFileChange = (files) => {
     // Handle file changes here if needed
   };
     const [uploadedImage, setUploadedImage] = useState(null);
- 
     const [selectedFile, setSelectedFile] = useState(null);
   
     const handleFileChange = (event) => {
@@ -80,6 +97,14 @@ function Braintumor() {
       setSelectedFile(file);
     };
   
+    const handleUploadedImage = (imagePath) => {
+      setUploadedImage(imagePath)
+      console.log('Received image path in parent component:', imagePath);
+      // You can set the image path in the parent component's state or perform any other necessary actions.
+    };
+
+
+
     const handleUpload = () => {
       if (selectedFile) {
         // Create a FormData object to send the file to the backend
@@ -93,7 +118,7 @@ function Braintumor() {
             console.log('File uploaded successfully:', response.data);
             const segmentedImagePath = response.data['segmented_image_path'];
             console.log('Segmented image path:', segmentedImagePath);
-            setUploadedImage( segmentedImagePath);
+            setUploadedImage(segmentedImagePath);
           })
           .catch((error) => {
             // Handle error
@@ -108,7 +133,7 @@ function Braintumor() {
   
   return (
     <>
-    
+    <Container style={containerStyle}>
     <Container>
       <Row>
         <Col sm={12} md={6} style={colStyle1}>
@@ -121,12 +146,12 @@ function Braintumor() {
     </Container>
      <Container style = {{display : 'flex', flexDirection : 'row', justifyItems: 'center', alignContent: 'center', justifyContent: 'center'}}>
       <div style={divstyle1}>
-      <DropFileInput onFileChange={(files) => onFileChange(files)} />
+      <DropFileInput onFileChange={handleUploadedImage}/>
       <div style={{display : 'flex', justifyContent: 'center', alignContent : 'center',alignItems: 'center', justifyItems: 'center',}}>
           {/* <InputFileUpload /> */}
           <input
   type="file"
-  accept=".jpg, .jpeg, .png"
+  accept=".jpg, .jpeg, .png , .tif, .tiff"
   onChange={handleFileChange}
   style={{
     fontFamily: 'Montserrat', // Use Montserrat font
@@ -143,21 +168,22 @@ function Braintumor() {
 />
 
             </div>
-          <Button   onClick={handleUpload} style={{ alignSelf: 'center', borderRadius: '25px',color: 'white', fontSize: '16px', fontStyle: 'normal', width: '400px',fontWeight: '500', lineHeight: 'normal', position: 'static' }}>Submit</Button>
+          <Button   onClick={handleUpload} style={buttonstyle1}>Submit</Button>
       </div>
-      {uploadedImage && (
+     
+     </Container>
+     <ResultModal open={uploadedImage !== null} onClose={() => setUploadedImage(null)} imageSrc={`http://localhost:12000/${uploadedImage}`} />
+
+     {/* {uploadedImage && (
         <div style={{ textAlign: 'center' }}>
           <img
-            src={uploadedImage} // Set the image source to the received URL
+            src={`http://localhost:12000/${uploadedImage}`} // Update the URL
             alt="Uploaded"
-            style={{ maxWidth: '100%', maxHeight: '400px' }} // Adjust image dimensions as needed
+            style={{ maxWidth: '100%', maxHeight: '400px' }}
           />
         </div>
-      )}
-     </Container>
-  
-
-
+      )} */}
+    </Container>
     </>
   );
 }

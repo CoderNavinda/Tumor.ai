@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Braintumor from './pages/braintumor';
 import './App.css';
 import { Landingpage } from './pages/landingpage';
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Navbar} from './components/Navbar/navbar';
-import { Aboutus } from './pages/aboutus';
+import { AboutUs } from './pages/aboutus';
 import  ContactUs  from './pages/contactus';
 import  NoPage  from './pages/nopage';
 import Login from './pages/login';
@@ -20,7 +21,7 @@ import Question from './pages/question';
 import History from './pages/history';
 import {BreastCancer} from './pages/uploadimage';
 import Profile from './pages/profile';
-import Braintumor from './pages/braintumor';
+
 import PrivateRoute from './components/PrivateRoute';
 function App() {
 
@@ -60,17 +61,22 @@ function App() {
         element={<LayoutWithNavbar />}
       >
         <Route index element={<Landingpage />} />
-        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
       </Route>
 
       {/* Routes without Navbar */}
-      <Route path="/uploadmri" element={<Uploadmri />} />
+      {/* <Route path="/uploadmri" element={<Uploadmri />} /> */}
+      {/* <Route path="/braintumor" element={<Braintumor />} /> */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/*" element={<NoPage />} />
       <Route exact path='/dashboard' element={<PrivateRoute/>}>
             <Route exact path='/dashboard' element={<Dashboard/>}/>
+          </Route>
+
+          <Route exact path='/braintumor' element={<PrivateRoute/>}>
+            <Route exact path='/braintumor' element={<Braintumor/>}/>
           </Route>
       <Route path="/forum" element={<Forum />} />
       <Route path="/results" element={<Results />} />
@@ -78,7 +84,7 @@ function App() {
       <Route path="/history" element={<History />} />
       <Route path="/uploadimage" element={<BreastCancer />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/braintumor" element={<Braintumor />} />
+     
     </Routes>
     </BrowserRouter>
 

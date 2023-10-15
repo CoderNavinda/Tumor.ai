@@ -8,11 +8,7 @@ from email.mime.application import MIMEApplication
 # Create a Blueprint for contactus
 contactus_bp = Blueprint('contactus', __name__)
 
-smtp_server = 'smtp.gmail.com'
-smtp_port = 587
-smtp_username = 'REPLACE'
-smtp_password = 'REPLACE'
-subject = "Response to Your Inquiry from Tumor.ai"
+
 
 # Define route handlers for /api/contactus
 

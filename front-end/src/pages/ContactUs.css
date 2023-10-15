@@ -9,13 +9,19 @@
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 2.2rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
   color:#007bff; /* Text color for the heading */
   font-family: "Montserrat-ExtraBold", Helvetica;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 2px; /* Adjust letter spacing */
 }
 .forum-1{
-  margin-left: 400px;
+  margin-left: 300px;
   margin-top: 100px;
+  height: 500px;
+  width:500px;
 }
 
 label {
@@ -38,13 +44,14 @@ label {
 }
 
 .txt-area {
-  height: 120px; /* Adjust the height of the textarea */
+  height: 120px; 
+ /* Adjust the height of the textarea */
 }
 
 .sub-11{
   position: absolute;
-  top: 530px;
-  left: 550px;
+ 
+  left: 300px;
   width: 180px;
   height: 50px;
   background-color: #007bff; /* Blue submit button color */
@@ -77,15 +84,17 @@ label {
   position: absolute;
   top: 100px;
   left: 900px;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   margin: 0;
   padding: 0;
 
 }
 
 /* Your existing CSS rules */
+/* Global styles (unchanged) */
 
+/* Styles for screens up to 768px width */
 @media screen and (max-width: 768px) {
   .contact-us {
     flex-direction: column;
@@ -97,7 +106,9 @@ label {
   .forum-1 {
     margin-left: 20px; /* Adjust margin for smaller screens */
     margin-top: 20px;
-    margin-right: 20px; /* Adjust margin for smaller screens */
+    width: 300px;
+    height: 300px;
+   /* Adjust margin for smaller screens */
   }
 
   .sub-11 {
@@ -119,15 +130,19 @@ label {
 @media screen and (max-width: 1024px) {
   .contact-us {
     flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
   }
   .image-container{
     display: none;
   }
 
   .forum-1 {
-    margin-left: 50px; /* Adjust margin for smaller screens */
+    margin-left: 20px; /* Adjust margin for smaller screens */
     margin-top: 150px; /* Adjust margin for smaller screens */
     margin-right: 50px;
+    width:550px;
+    height: 550px;
   }
 
   .sub-11 {
@@ -141,8 +156,3 @@ label {
     margin: 20px auto; /* Adjust margin for smaller screens */
   }
 }
-
-
-
-
-  

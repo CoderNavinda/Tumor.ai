@@ -31,7 +31,7 @@ function Dashboard() {
           <Card sx={{ marginLeft: 2, maxWidth: 345, marginRight:5,marginBottom:3 }}>
             <CardMedia sx={{ height: 400 }} image={Breast} title="green iguana" />
             <CardContent>
-              <Link to='/uploadmri'>
+              <Link to='/braintumor'>
             <Typography gutterBottom variant="h5" component="div" className="green-button">
                       Brain-Tumor Detection
                       </Typography>
