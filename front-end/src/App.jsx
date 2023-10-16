@@ -24,7 +24,7 @@ import Profile from './pages/profile';
 
 import PrivateRoute from './components/PrivateRoute';
 function App() {
-
+  const login=window.localStorage.getItem('isLogedIn');
   const LayoutWithNavbar = () => (
     <>
       <Navbar />
@@ -40,7 +40,7 @@ function App() {
   //     setUser(currentUser);
   //   });
   // }, []);
-  setPersistence(auth, browserSessionPersistence);
+  // setPersistence(auth, browserSessionPersistence);
   useEffect(() => {
     fetchData()
       .then(data => {
@@ -60,7 +60,7 @@ function App() {
       <Route
         element={<LayoutWithNavbar />}
       >
-        <Route index element={<Landingpage />} />
+        <Route index element={login ? <Dashboard/> : <Landingpage />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
       </Route>

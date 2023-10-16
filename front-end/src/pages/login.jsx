@@ -18,7 +18,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const auth = getAuth(firebaseApp);
-  setPersistence(auth, browserSessionPersistence);
+  // setPersistence(auth, browserSessionPersistence);
   const [user, setUser] = useState(null);
   // useEffect(() => {
   //   onAuthStateChanged(auth, (currentUser) => {
@@ -39,6 +39,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    window.localStorage.setItem("isLogedIn",true)
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;

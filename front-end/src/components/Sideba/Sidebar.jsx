@@ -38,6 +38,7 @@ export const  Sidebar=()=> {
 .catch(error=> console.log(error))};
 
   const userSignOut =()=>{
+    window.localStorage.removeItem("isLogedIn")
       signOut(auth).then(()=>{
           console.log('sign out')
           userSignOutBackend();
