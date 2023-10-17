@@ -64,9 +64,11 @@ function Dashboard() {
           <Card className='lastcrd' sx={{ maxWidth: 345 ,marginLeft:2, maxHeight:590}}>
             <CardMedia sx={{ height: 400 }} image={Viewpast} title="green iguana" />
             <CardContent>
+              <Link to ='/history'>
             <Typography gutterBottom variant="h5" component="div" className="green-button">
                        View Past Reports
                       </Typography>
+                      </Link>
 
               <Typography variant="body2" color="text.secondary" fontFamily={"Montserrat"}>
               The View Past Reports feature allows you to access and review your historical diagnostic reports with ease.

@@ -9,10 +9,12 @@ import  {CustFooter}  from '../components/landingpage/footer';
 import {Uploadmri} from './uploadmri'
 import { Outlet, Link } from "react-router-dom";
 import { Element } from 'react-scroll';
+import { Navbar } from '../components/Navbar/navbar';
 
 export const  Landingpage = () => {
   return (
     <>
+    <Navbar/>
     <img src={Gradient} alt='logo' className='gradient' />
     <img src={Backhead} alt='logo' className='logo2' />
     <p className='headingtxt'>

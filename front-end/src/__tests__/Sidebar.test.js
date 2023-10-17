@@ -40,11 +40,30 @@ jest.mock('../components/Sideba/Sidebar', () => {
     
 });
 
+test('Clicking the link navigates to the correct route', () => {
+
+ render(
+            <Router> {/* Wrap your component with Router */}
+              <Sidebar />
+            </Router>
+          );
+
+          
+
+          const linkElement=screen.getByText('Home');
+          fireEvent.click(linkElement);
+          expect(window.location.pathname).toBe('/');
+
+          // const linkElement2=screen.getByText('Dashboard');
+          // fireEvent.click(linkElement2);
+          // expect(window.location.pathname).toBe('/dashboard');
+
+          const linkElement3=screen.getByText('Log out');
+          fireEvent.click(linkElement3);
+          expect(window.location.pathname).toBe('/');
 
 
-
-
-
+ });
 
 
 

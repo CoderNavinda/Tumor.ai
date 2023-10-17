@@ -56,7 +56,7 @@ export const  Sidebar=()=> {
       </div>
       <ul className="nav-linksnew2">
         <li>
-          <a href="/">
+          <a href="/landingpage">
             <FaHome className='iconnew'/>
             <span>Home</span>
           </a>

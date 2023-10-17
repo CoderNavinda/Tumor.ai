@@ -39,10 +39,11 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    window.localStorage.setItem("isLogedIn",true)
+    // window.localStorage.setItem("isLogedIn",true)
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      window.localStorage.setItem("isLogedIn",true)
       handleLoginBackend(email, password);
       console.log('User logged in:', user);
       navigate('/dashboard', { replace: true });

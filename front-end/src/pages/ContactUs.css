@@ -1,11 +1,11 @@
 
 .contact-us {
   background-color: #f3f3fd;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 100%;
 }
 
 h1 {
@@ -95,6 +95,30 @@ label {
 /* Global styles (unchanged) */
 
 /* Styles for screens up to 768px width */
+@media screen and (max-width: 450px) {
+  .contact-us {
+    align-items: center;
+    flex-direction: column;
+  }
+  .forum-1 {
+    margin-left: 150px; /* Adjust margin for smaller screens */
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+   /* Adjust margin for smaller screens */
+  }
+
+  .sub-11 {
+    position: static; /* Adjust button position for smaller screens */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    width: 80%; /* Make button full width */
+  }
+
+ 
+  .image-container {
+    display: none; /* Hide the image for very small screens */
+  }
+}
 @media screen and (max-width: 768px) {
   .contact-us {
     flex-direction: column;

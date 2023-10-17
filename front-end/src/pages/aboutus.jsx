@@ -4,8 +4,11 @@ import image2 from '../assets/image 2.png';
 import image32 from '../assets/image 32.png';
 import image33 from '../assets/image 33.png';
 import { FaCheck } from 'react-icons/fa';
+import { Navbar } from '../components/Navbar/navbar';
 export const AboutUs = () => {
   return (
+    <>
+    {/* <Navbar/> */}
     <div className="about-us-container">
       <h1 className='aboutush1'>Our Goal</h1>
       <ul className='aboutusul'>
@@ -37,6 +40,7 @@ export const AboutUs = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

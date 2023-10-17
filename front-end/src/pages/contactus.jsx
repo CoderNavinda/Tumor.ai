@@ -106,6 +106,8 @@ const [messageError, setMessageError] = useState('');
   
 
   return (
+    <>
+    {/* <Navbar/> */}
     <div className='contact-us'>
       <img src={rectangle1190} alt='Contact Us' className='image-container' />
       <div className='forum-1'>
@@ -145,6 +147,7 @@ const [messageError, setMessageError] = useState('');
         </form>
       </div>
     </div>
+    </>
   );
 };
 export default ContactUs;
