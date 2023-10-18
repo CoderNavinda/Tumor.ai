@@ -15,13 +15,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from routes.contactus import contactus_bp 
 from routes.upload import upload_bp
+from routes.skincancer import skincancer_bp
+
 
 app = Flask(__name__)
 CORS(app,supports_credentials=True)
 
 app.register_blueprint(contactus_bp)
 app.register_blueprint(upload_bp)
-
+app.register_blueprint(skincancer_bp)
 
 #initializing MongoDb Database
 mongo_uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6"

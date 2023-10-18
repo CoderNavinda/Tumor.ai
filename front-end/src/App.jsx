@@ -10,13 +10,13 @@ import Login from './pages/login';
 import {Uploadmri}   from './pages/uploadmri';
 import { fetchData } from './utils/get';
 import Register from './pages/register';
-import {Dashboard} from './pages/dashboard';
+import Dashboard from './pages/dashboard';
 import Forum from './pages/forum';
 import axios from 'axios';
 import Results from './pages/results';
 import Question from './pages/question';
 import History from './pages/history';
-import {BreastCancer} from './pages/uploadimage';
+import SkinCancer from './pages/uploadimage';
 import Profile from './pages/profile';
 import Braintumor from './pages/braintumor';
 function App() {
@@ -64,7 +64,7 @@ function App() {
       <Route path="/results" element={<Results />} />
       <Route path="/question" element={<Question />} />
       <Route path="/history" element={<History />} />
-      <Route path="/uploadimage" element={<BreastCancer />} />
+      <Route path="/uploadimage" element={<SkinCancer />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/braintumor" element={<Braintumor />} />
     </Routes>

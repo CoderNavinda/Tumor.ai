@@ -3,6 +3,7 @@ import './login.css';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {firebaseApp} from '../firebase';
 import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 // Use Firebase Auth
@@ -11,16 +12,44 @@ function Login() {
   //======================handle data==========================================================================
   
   const navigate = useNavigate();
-
+  
   
   // Initialize Firebase
  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   const auth = getAuth(firebaseApp);
+
+  const handleEmailFocus = () => {
+    setIsEmailFocused(true);
+    setEmailError('');
+  };
+
+  const handleEmailBlur = () => {
+    setIsEmailFocused(email !== '');
+    if (!isValidEmail(email)) {
+        setEmailError('*Invalid email format');
+      } else {
+        setEmailError('');
+      }
+  };
+  const isValidEmail = (email) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
+
+  const handlePasswordFocus = () => {
+    setIsPasswordFocused(true);
+  };
+
+  const handlePasswordBlur = () => {
+    setIsPasswordFocused(password !== '');
+  };
+
+  const [emailError, setEmailError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,38 +62,62 @@ function Login() {
       console.error('Login error:', error.message);
       alert('invalid credentials');
     }
+    
   };
 
   //===============================================================================================================
   return (
     <div className="login-1">
-      <div onSubmit={handleLogin} className="form" >
-        
-          <img className="rectangle" alt="Rectangle" src="https://static.vecteezy.com/system/resources/previews/000/570/719/original/set-of-doctor-and-nurse-cartoon-characters-medical-staff-team-concept-in-hospital-vector.jpg" />
-          <div className="overlap">
-            <div className="text-wrapper">Username</div>
-            
-              <input type="email" className='txt-2-ama' name="username" placeholder="Enter username or Email" 
-            onChange={(e) => setEmail(e.target.value)} required  />
-          </div>
-          <div className="overlap-group">
-            <div className="text-wrapper-2">Password</div>
-            <input type="password" className='ps-ama' name="password" placeholder="Enter Passward"
-            onChange={(e) => setPassword(e.target.value)} required  />
-            
-          </div>
-          <div className="text-wrapper-4">Forget your Password?</div>
-          
-          <div className="overlap-2">
-            <div className="button-container">
-            <button onClick={handleLogin} className='sb-ama'>Sign In</button>
+      <div className="img">
+       {/* <img className='backimage'src="/back2.jpg" /> */}
+      </div>
+      <div className="login-content ">
+        <form onSubmit={handleLogin}  >
+          <h2 className="title">Welcome</h2>
+          <h4 className='sub'>Your Gateway to Tumor Analysis</h4>
+          <div className={`input-overlap one ${isEmailFocused ? 'focus' : ''}`}>
+            <div className="i">
+              <i className="fas fa-user"></i>
+            </div>
+            <div className="overlap">
+              <h5>Username</h5>
+              <input
+                    type="text"
+                    className="input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={handleEmailFocus}
+                    onBlur={handleEmailBlur}
+                  />
+                  {emailError && <p className="error-message">{emailError}</p>}
             </div>
           </div>
-        
-        <p className="p">Your Gateway to Brain Tumor Analysis</p>
+          <div className={`input-overlap pass ${isPasswordFocused ? 'focus' : ''}`}>
+            <div className="i">
+              <i className="fas fa-lock"></i>
+            </div>
+            <div className="overlap">  
+            <h5>Password</h5>
+            <input
+              type="password"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onFocus={handlePasswordFocus}
+              onBlur={handlePasswordBlur}
+            />
+              
+          </div>
+          
+          </div>
+          <a href="#">Forgot Password?</a>
+          <input onClick={handleLogin} type="submit" className="btn" value="Login" />
+         
+        </form>
       </div>
+      
     </div>
-  );
+    );
 }
 
 export default Login;

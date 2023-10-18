@@ -1,444 +1,78 @@
-.about-us {
-    background-color: #f3f3fd;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .about-us .div {
-    background-color: #f3f3fd;
-    height: 1024px;
-    position: relative;
-    width: 1470px;
-  }
-  
-  .about-us .overlap {
-    height: 128px;
-    left: 1047px;
-    position: absolute;
-    top: 740px;
-    width: 170px;
-  }
-  
-  .about-us .text-wrapper {
-    color: #ffffff;
-    font-family: "Montserrat-ExtraBold", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 107px;
-    letter-spacing: 0.2px;
-    line-height: 64px;
-    position: absolute;
-    top: 63px;
-    white-space: nowrap;
-  }
-  
- 
-  .about-us .overlap-group {
-    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(160.32, 160.32, 213.76, 0) 100%);
-    height: 517px;
-    left: 0;
-    position: absolute;
-    top: 108px;
-    width: 1470px;
-  }
-  
-  .about-us .text-wrapper-2 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 32px;
-    font-weight: 600;
-    left: 129px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 43px;
-    width: 492px;
-  }
-  
-  .about-us .empowering-medical {
-    color: #000000;
-    font-family: "Montserrat-Medium", Helvetica;
-    font-size: 20px;
-    font-weight: 500;
-    left: 254px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 118px;
-  }
-  
-  .about-us .element {
-    height: 20px;
-    left: 222px;
-    position: absolute;
-    top: 144px;
-    width: 20px;
-  }
-  
-  .about-us .vector-wrapper {
-    border: 2px solid;
-    border-color: #24a0ed;
-    border-radius: 12px;
-    height: 24px;
-    left: -2px;
-    position: relative;
-    top: -2px;
-    width: 24px;
-  }
-  
-  .about-us .vector {
-    height: 20px;
-    left: 5px;
-    position: absolute;
-    top: 3px;
-    width: 20px;
-  }
-  
-  .about-us .overlap-wrapper {
-    height: 20px;
-    left: 222px;
-    position: absolute;
-    top: 219px;
-    width: 20px;
-  }
-  
-  .about-us .overlap-group-wrapper {
-    height: 20px;
-    left: 222px;
-    position: absolute;
-    top: 294px;
-    width: 20px;
-  }
-  
-  .about-us .element-2 {
-    height: 20px;
-    left: 222px;
-    position: absolute;
-    top: 369px;
-    width: 20px;
-  }
-  
-  .about-us .element-3 {
-    height: 20px;
-    left: 222px;
-    position: absolute;
-    top: 444px;
-    width: 20px;
-  }
-  
-  .about-us .rectangle {
-    height: 393px;
-    left: 859px;
-    object-fit: cover;
-    position: absolute;
-    top: 88px;
-    width: 491px;
-  }
-  
-  .about-us .text-wrapper-3 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 32px;
-    font-weight: 600;
-    left: 659px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 639px;
-    white-space: nowrap;
-  }
-  
+.about-us-container {
+  margin-top: 80px;
+  padding: 20px;
+  text-align: center;
+  font-family: "Montserrat-ExtraBold", Helvetica;
+}
 
-  
-  .about-us .navinda{
-    width: 128px;
-    height: 128px;
-    left:360px;
-    top:741px;
-    position: absolute;
+.aboutusul {
+  list-style: none;
+  padding: 20px;
+  font-family: "Montserrat", Helvetica;
+  background-color: #f5f5f5; /* Background color for the entire list */
+  border-radius: 10px; /* Add rounded corners to the list */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+}
 
-  }
-  
-  .about-us .text-wrapper-4 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 330px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 878px;
-    white-space: nowrap;
-    width: 204px;
-  }
-  
-  .about-us .text-wrapper-5 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 303px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 905px;
-    white-space: nowrap;
-  }
-  
-  
-  .about-us .shamindi{
-    width: 128px;
-    height: 128px;
-    left:690px;
-    top:741px;
-    position: absolute;
+.aboutusli {
+  margin-bottom: 20px;
+  font-size: 1.2rem; /* Adjust font size for list items */
+  color: #333; /* Text color for list items */
+  padding-left: 20px; /* Add space to the left of list items */
+  position: relative; /* Position relative for pseudo-element */
+}
 
-  }
-  .about-us .text-wrapper-6 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 670px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 878px;
-    white-space: nowrap;
-  }
-  
-  .about-us .text-wrapper-7 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 640px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 905px;
-    white-space: nowrap;
-  }
-  
-  
-  .about-us .amandi{
-    width: 128px;
-    height: 128px;
-    left:1047px;
-    top:745px;
-    position: absolute;
-  }
-  
-  .about-us .text-wrapper-8 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 1040px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 878px;
-    white-space: nowrap;
-  }
-  
-  .about-us .text-wrapper-9 {
-    color: #000000;
-    font-family: "Montserrat-SemiBold", Helvetica;
-    font-size: 20px;
-    font-weight: 600;
-    left: 1010px;
-    letter-spacing: 0;
-    line-height: 75px;
-    position: absolute;
-    top: 905px;
-    white-space: nowrap;
-  }
-  
-  
-  
- 
-  
-  .about-us .nav-menu {
-    align-items: center;
-    display: inline-flex;
-    gap: 47.59px;
-    left: 582px;
-    position: absolute;
-    top: 44px;
-  }
-  
-  .about-us .text-wrapper-10 {
-    color: #404040;
-    font-family: "Montserrat-Medium", Helvetica;
-    font-size: 25.4px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: normal;
-    margin-top: -0.79px;
-    position: relative;
-    width: fit-content;
-  }
-  
-  .about-us .text-wrapper-11 {
-    color: #404040;
-    font-family: "Montserrat-Bold", Helvetica;
-    font-size: 25.4px;
-    font-weight: 700;
-    left:80px;
-    letter-spacing: 0;
-    line-height: normal;
-    margin-top: -0.79px;
-    position: relative;
-    width: fit-content;
-  }
-  
-  .about-us .group {
-    height: 1px;
-    left: 711px;
-    position: absolute;
-    top: 85px;
-    width: 81px;
-  }
-  
-  .about-us .line {
-    height: 2px;
-    left: 0;
-    position: absolute;
-    top: -2px;
-    width: 81px;
-  }
-  
-  .about-us .register {
-    height: 41px;
-    left: 1233px;
-    position: absolute;
-    top: 44px;
-    width: 113px;
-  }
-  
-  .about-us .div-wrapper {
-    background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
-    border-radius: 14.51px;
-    height: 41px;
-    position: relative;
-    width: 111px;
-  }
-  
-  .about-us .text-wrapper-12 {
-    color: #ffffff;
-    font-family: "Montserrat-Bold", Helvetica;
-    font-size: 16.8px;
-    font-weight: 700;
-    left: 14px;
-    letter-spacing: 1.01px;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 10px;
-    white-space: nowrap;
-    width: 82px;
-  }
-  
-  .about-us .register-2 {
-    height: 41px;
-    left: 1092px;
-    position: absolute;
-    top: 44px;
-    width: 113px;
-  }
-  
-  .about-us .text-wrapper-13 {
-    color: #ffffff;
-    font-family: "Montserrat-Bold", Helvetica;
-    font-size: 16.8px;
-    font-weight: 700;
-    left: 18px;
-    letter-spacing: 1.01px;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 10px;
-    white-space: nowrap;
-    width: 73px;
-  }
-  
-  .about-us .group-2 {
-    height: 120px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 311px;
-  }
-  
-  .about-us .overlap-5 {
-    height: 120px;
-    position: relative;
-    width: 309px;
-  }
-  
-  .about-us .tumor-ai {
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent;
-    background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
-    background-clip: text;
-    color: transparent;
-    font-family: "Montserrat-Bold", Helvetica;
-    font-size: 43.2px;
-    font-weight: 400;
-    height: 53px;
-    left: 114px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-fill-color: transparent;
-    top: 36px;
-  }
-  
-  .about-us .span {
-    color: #1678f2;
-    font-weight: 700;
-  }
-  
-  .about-us .text-wrapper-14 {
-    color: #1678f2;
-    font-family: "Montserrat-Regular", Helvetica;
-  }
-  
-  .about-us .navy-modern-AI {
-    height: 120px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 120px;
-  }
-  
-  .about-us .text-wrapper-15 {
-    color: #404040;
-    font-family: "Montserrat-Medium", Helvetica;
-    font-size: 25.4px;
-    font-weight: 500;
-    height: 31px;
-    left: 500px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 44px;
-  }
-  
-  .about-us .text-wrapper-16 {
-    color: #404040;
-    font-family: "Montserrat-Medium", Helvetica;
-    font-size: 25.4px;
-    font-weight: 500;
-    height: 31px;
-    left: 870px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 44px;
-  }
-  
+.aboutush1 {
+  font-size: 2.2rem;
+  color: #007bff; /* Text color for the heading */
+  font-family: "Montserrat", Helvetica;
+  margin: 20px 0;
+  text-align: center; /* Center-align the text */
+  text-transform: uppercase; /* Convert text to uppercase */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 2px; /* Adjust letter spacing */
+  border-bottom: 2px solid #1b2127; /* Add an underline effect */
+  padding-bottom: 10px; /* Space between the text and underline */
+}
+
+
+.members-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Montserrat", Helvetica;
+  justify-content: center;
+  gap: 40px; /* Add horizontal and vertical space between members */
+  /* Background color for the container */
+  padding: 20px; /* Add padding to the container */
+  border-radius: 10px; /* Add rounded corners to the container */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+}
+
+.member {
+  margin: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-family: "Montserrat", Helvetica;
+  background-color: #f3f3fd; /* Background color for member divs */
+  padding: 20px; /* Add padding to member divs */
+  border-radius: 10px; /* Add rounded corners to member divs */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff; /* Add a border to the member images */
+}
+
+.member p {
+  margin: 0;
+  color: #333; /* Text color for member names and emails */
+}
+
+.member p.email {
+  font-size: 0.9rem; /* Adjust font size for email addresses */
+  color: #777; /* Text color for email addresses */
+}

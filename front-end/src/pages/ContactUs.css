@@ -1,86 +1,182 @@
 
 .contact-us {
-    background-color: #f3f3fd;
-    height: 100vh;
-    position: absolute;
-    width: 100vw;
-  }
+  background-color: #f3f3fd;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 
-  h1 {
-    font-size: 32px;
-    color:#007bff; /* Text color for the heading */
-    font-family: "Montserrat-ExtraBold", Helvetica;
-  }
-  
+h1 {
+  font-size: 2.2rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color:#007bff; /* Text color for the heading */
+  font-family: "Montserrat-ExtraBold", Helvetica;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 2px; /* Adjust letter spacing */
+}
+.forum-1{
+  margin-left: 300px;
+  margin-top: 100px;
+  height: 500px;
+  width:500px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444; /* Text color for labels */
+  font-family: "Montserrat-Medium", Helvetica;
+}
+
+.txt-contactus,
+.email-contactus,
+.txt-area {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 16px; /* Font size for input fields */
+  width: 100%;
+}
+
+.txt-area {
+  height: 120px; 
+ /* Adjust the height of the textarea */
+}
+
+.sub-11{
+  position: absolute;
  
-  label {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #444; /* Text color for labels */
-    font-family: "Montserrat-Medium", Helvetica;
-  }
-  
-  .txt-contactus,
-  .email-contactus,
-  .txt-area {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 16px; /* Font size for input fields */
-    width: 100%;
-  }
-  
-  .txt-area {
-    height: 120px; /* Adjust the height of the textarea */
-  }
-  
-  .sub-11{
-    position: absolute;
-    top: 430px;
-    left: 50px;
-    width: 180px;
-    height: 50px;
-    background-color: #007bff; /* Blue submit button color */
-    font-family: "Montserrat-Medium", Helvetica;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 18px; /* Font size for the button text */
-    transition: background-color 0.3s;
-  }
-  
+  left: 300px;
+  width: 180px;
+  height: 50px;
+  background-color: #007bff; /* Blue submit button color */
+  font-family: "Montserrat-Medium", Helvetica;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px; /* Font size for the button text */
+  transition: background-color 0.3s;
+}
+
 .sub-11:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
- 
-  
-  
-  
-   .group {
-    height: 660px;
-    left: 753px;
-    position: absolute;
-    top: 140px;
-    width: 646px;
-  }
- 
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+
+
+ .group {
+  height: 660px;
+  left: 753px;
+  position: absolute;
+  top: 140px;
+  width: 646px;
+}
+
 .image-container{
-    position: absolute;
-    top: 120px;
-    left: 100px;
-    width: 500px;
-    height: 500px;
-    margin: 0;
-    padding: 0;
+  position: absolute;
+  top: 100px;
+  left: 900px;
+  width: 450px;
+  height: 450px;
+  margin: 0;
+  padding: 0;
 
 }
-  
-  
+
+/* Your existing CSS rules */
+/* Global styles (unchanged) */
+
+/* Styles for screens up to 768px width */
+@media screen and (max-width: 450px) {
+  .contact-us {
+    align-items: center;
+    flex-direction: column;
+  }
+  .forum-1 {
+    margin-left: 150px; /* Adjust margin for smaller screens */
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+   /* Adjust margin for smaller screens */
+  }
+
+  .sub-11 {
+    position: static; /* Adjust button position for smaller screens */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    width: 80%; /* Make button full width */
+  }
+
+ 
+  .image-container {
+    display: none; /* Hide the image for very small screens */
+  }
+}
+@media screen and (max-width: 768px) {
+  .contact-us {
+    flex-direction: column;
+  }
+  .image-container{
+    display: none;
+  }
+
+  .forum-1 {
+    margin-left: 20px; /* Adjust margin for smaller screens */
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+   /* Adjust margin for smaller screens */
+  }
+
+  .sub-11 {
+    position: static; /* Adjust button position for smaller screens */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    width: 100%; /* Make button full width */
+  }
+
+  .image-container {
+    text-align: center; /* Center the image */
+    margin: 20px auto; /* Adjust margin for smaller screens */
+  }
+}
+
+
 
 
   
-    
+@media screen and (max-width: 1024px) {
+  .contact-us {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .image-container{
+    display: none;
+  }
+
+  .forum-1 {
+    margin-left: 20px; /* Adjust margin for smaller screens */
+    margin-top: 150px; /* Adjust margin for smaller screens */
+    margin-right: 50px;
+    width:550px;
+    height: 550px;
+  }
+
+  .sub-11 {
+    position: static; /* Adjust button position for smaller screens */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    width: 100%; /* Make button full width */
+  }
+
+  .image-container {
+    text-align: center; /* Center the image */
+    margin: 20px auto; /* Adjust margin for smaller screens */
+  }
+}

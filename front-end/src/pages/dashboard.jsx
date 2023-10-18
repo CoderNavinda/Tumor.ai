@@ -1,135 +1,85 @@
 import React from "react";
 import "./dashboard.css";
-import {Link} from 'react-router-dom'
-import Navy from '../assets/Navy.png';
-import {Rectangle1217}  from "../assets/dashboard";
-import { Rectangle1215 } from "../assets/dashboard";
-import { Rectangle1224 } from "../assets/dashboard";
-import { Rectangle1216 } from "../assets/dashboard";
+import { Link } from 'react-router-dom'
 
-import Icons from "../components/dashboard/Icons";
+import { Viewpast } from "../assets/dashboard";
+import { Breast } from "../assets/dashboard";
+import { Pp3 } from "../assets/dashboard";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Sidebar from "../components/Sideba/Sidebar";
 
-export const Dashboard = () => {
- return(
- 
-<div className="dashboard">
-<Icons/>
-          <div className="text-wrapperdash">Dashboard</div> 
-          <div className="rectangle1" />
-          <Link to='/uploadmri'>
-          <img className="rectangle1217" alt="Rectangle" src={Rectangle1217}/>
-          </Link>
-          <div className="text-wrapper1217">Tumor Segmentation</div>
-          <div className="rectangle2" />
-          <Link to='/uploadimage'>
-          <img className="rectangle1215" alt="Rectangle" src={Rectangle1215}/>
-          </Link>
-          <div className="text-wrapper1215">Breast Cancer Detection</div>
-          <div className="rectangle3" />
-          <Link to='/history'>
-          <img className="rectangle1224" alt="Rectangle" src={Rectangle1216}/>
-          </Link>
-          <div className="text-wrapper1224">View Past Reports</div>
-</div>
 
-    
-    
-    
+
+function Dashboard() {
+  return (
+    <div className="container2">
+      <div className="sidebar2">
+     <Sidebar/>
+      </div>
+      <div className="child2">
+        <div className="contentn">
+          <h2>Choose your health service</h2>
+        </div>
+        <div className="content-child1" style={{ marginLeft: 230, padding: 10, marginRight: 70 }}>
+          <Card sx={{ marginLeft: 2, maxWidth: 345, marginRight:5,marginBottom:3 }}>
+            <CardMedia sx={{ height: 400 }} image={Breast} title="green iguana" />
+            <CardContent>
+              <Link to='/braintumor'>
+            <Typography gutterBottom variant="h5" component="div" className="green-button">
+                      Brain-Tumor Detection
+                      </Typography>
+                      </Link>
+
+              <Typography variant="body2" color="text.secondary" fontFamily={"Montserrat"}>
+              Our Brain Tumor Detection service employs cutting-edge deep learning technology to analyze MRI images and accurately identify the presence of brain tumors. 
+              </Typography>
+            </CardContent>
+            <CardActions>
+              
+            </CardActions>
+          </Card>
+          <Card sx={{ maxWidth: 345, marginRight: 5, marginBottom:3,marginLeft:2 }}>
+            <CardMedia sx={{ height: 400 }} image={Pp3} title="green iguana" />
+            <CardContent>
+            <Typography gutterBottom variant="h5" component="div" className="green-button">
+                       Breast-Cancer Detection
+                      </Typography>
+
+
+              <Typography variant="body2" color="text.secondary" fontFamily={"Montserrat"}>
+              Our Breast Cancer Detection system is designed to assist medical professionals in the early detection of breast cancer
+              </Typography>
+            </CardContent>
+            <CardActions>
+              
+            </CardActions>
+          </Card>
+          <Card className='lastcrd' sx={{ maxWidth: 345 ,marginLeft:2, maxHeight:590}}>
+            <CardMedia sx={{ height: 400 }} image={Viewpast} title="green iguana" />
+            <CardContent>
+              <Link to ='/history'>
+            <Typography gutterBottom variant="h5" component="div" className="green-button">
+                       View Past Reports
+                      </Typography>
+                      </Link>
+
+              <Typography variant="body2" color="text.secondary" fontFamily={"Montserrat"}>
+              The View Past Reports feature allows you to access and review your historical diagnostic reports with ease.
+              </Typography>
+            </CardContent>
+            <CardActions>
+              
+            </CardActions>
+          </Card>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default Dashboard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import "./Dashboard.css";
-// import {Link} from 'react-router-dom'
-// import Navy from '../assets/Navy.png';
-// import {Rectangle1217}  from "../assets/dashboard";
-// import { Rectangle1215 } from "../assets/dashboard";
-// import { Rectangle1224 } from "../assets/dashboard";
-// import { Rectangle1216 } from "../assets/dashboard";
-// import { image18 } from "../assets/dashboard";
-// import { image6 } from "../assets/dashboard";
-// import { image3 } from "../assets/dashboard";
-// import { image19 } from "../assets/dashboard";
-// import DetectBrainTumors from "../components/dashboard/DetectBrainTumors";
-
-
-// import "./Dashboard.css";
-// import QAForum from "../components/dashboard/QAForum";
-// import ViewPastReport from "../components/dashboard/ViewPastReport";
-// import Icons from "../components/dashboard/Icons";
-
-// export const Dashboard = () => {
- 
-
-  
-//   return (
-  
-  
-//     <div className="dashboard">
-     
-   
-//           <Icons/>
-//           <div className="text-wrapperdash">Dashboard</div>
-//           <div className="rectangle1" />
-//           <Link to='/aboutus'>
-//           <img className="rectangle1217" alt="Rectangle" src={Rectangle1217}/>
-//           </Link>
-//           <div className="text-wrapper1217">Tumor Segmentation</div>
-//           <div className="rectangle2" />
-//           <Link to='/aboutus'>
-//           <img className="rectangle1215" alt="Rectangle" src={Rectangle1215}/>
-//           </Link>
-//           <div className="text-wrapper1215">Tumor Classification</div>
-//           <div className="rectangle3" />
-//           <Link to='/aboutus'>
-//           <img className="rectangle1224" alt="Rectangle" src={Rectangle1224}/>
-//           </Link>
-//           <div className="text-wrapper1224">Q & A Forum</div>
-//           <div className="rectangle4" />
-//           <Link to='/aboutus'>
-//           <img className="rectangle1216" alt="Rectangle" src={Rectangle1216}/>
-//           </Link>
-//           <div className="text-wrapper1216">View Past Reports</div>
-//       </div>
-    
-    
-//   );
-// };
