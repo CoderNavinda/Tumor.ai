@@ -8,19 +8,19 @@ import { getAnalytics } from "firebase/analytics";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZJqBzNDRQngStP-yABTWh5SOdGCDdKzI",
-  authDomain: "tumoridsys.firebaseapp.com",
-  projectId: "tumoridsys",
-  storageBucket: "tumoridsys.appspot.com",
-  messagingSenderId: "287430774176",
-  appId: "1:287430774176:web:da75241dc330c8272ca8c5",
-  measurementId: "G-P3SG88XMN7"
+  apiKey: "AIzaSyCiBfXbZ_mWAtNc-4q-NZ0UmDaiuNPCp4Y",
+  authDomain: "react-auth-fbf1e.firebaseapp.com",
+  projectId: "react-auth-fbf1e",
+  storageBucket: "react-auth-fbf1e.appspot.com",
+  messagingSenderId: "966708901512",
+  appId: "1:966708901512:web:7b742ff05cb0b56548d13d",
+  measurementId: "G-Q1ECNVN6PS"
 };
 
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
+// const analytics = getAnalytics(firebaseApp);
 
 
 export {firebaseApp};

@@ -37,12 +37,7 @@ function App() {
   const [data, setData] = useState([]);
   const auth = getAuth(firebaseApp);
   const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //   });
-  // }, []);
-  // setPersistence(auth, browserSessionPersistence);
+
   useEffect(() => {
     fetchData()
       .then(data => {
@@ -62,18 +57,15 @@ function App() {
       <Route
         element={<LayoutWithNavbar />}
       >
-        {/* <Route element={login ?  <Dashboard/> : <Landingpage />} /> */}
-        <Route index element={login ?  <Dashboard/> : <Landingpage />} />
-        <Route index element={<Landingpage />} />
+      
+        <Route index element={ <Landingpage />} />
+        
         <Route path='/landingpage' element={<Landingpage />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
       </Route>
 
-      {/* Routes without Navbar */}
-      {/* <Route path="/uploadmri" element={<Uploadmri />} /> */}
-      {/* <Route path="/braintumor" element={<Braintumor />} /> */}
-      {/* <Route index element={login ? <Dashboard/> : <Landingpage />} /> */}
+
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -81,8 +73,7 @@ function App() {
       <Route exact path='/dashboard' element={<PrivateRoute/>}>
             <Route exact path='/dashboard' element={<Dashboard/>}/>
           </Route>
-          {/* <Route exact path='/dashboard' element={login ? <Dashboard/> : <Landingpage />}/>
-           */}
+         
 
           <Route exact path='/braintumor' element={<PrivateRoute/>}>
             <Route exact path='/braintumor' element={<Braintumor/>}/>
@@ -91,7 +82,6 @@ function App() {
       <Route path="/results" element={<Results />} />
       <Route path="/question" element={<Question />} />
 
-      {/* <Route path="/history" element={login ? <History /> : <Landingpage/>} /> */}
       <Route exact path='/history' element={<PrivateRoute/>}>
             <Route exact path='/history' element={<History/>}/>
           </Route>

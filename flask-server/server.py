@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template,session
+from flask import Flask, request, jsonify, render_template,session,send_from_directory
 from flask_cors import CORS
 # from dependencies import *
 # from unet import *
@@ -181,6 +181,24 @@ data_transforms = None
 
 
 
+    
+@app.route('/static/<filename>')
+def segmented_file(filename):
+    if filename.endswith('.tif'):
+        # Open the TIFF image and convert it to JPG
+        tiff_image = Image.open(os.path.join('static', filename))
+        tiff_image = tiff_image.convert('RGB')
+
+        # Save the converted image as JPG
+        jpg_filename = os.path.splitext(filename)[0] + '.jpg'
+        jpg_image_path = os.path.join('static', jpg_filename)
+        tiff_image.save(jpg_image_path, 'JPEG')
+
+        # Serve the converted JPG image
+        return send_from_directory('static', jpg_filename)
+    else:
+        # Serve other supported image formats as-is
+        return send_from_directory('static', filename)
 
 
 

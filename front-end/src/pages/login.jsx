@@ -44,6 +44,7 @@ function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       window.localStorage.setItem("isLogedIn",true)
+      console.log("isLogedIn")
       handleLoginBackend(email, password);
       console.log('User logged in:', user);
       navigate('/dashboard', { replace: true });

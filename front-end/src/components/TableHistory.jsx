@@ -50,8 +50,9 @@ TableHistory.propTypes = {
                 {row.Date}
                 </TableCell>
                 <TableCell align="center">{row.PredictionType}</TableCell>
-                <TableCell align="center">{row.UploadedImage}</TableCell>
-                <TableCell align="center">{row.Result}</TableCell>
+                <TableCell align="center"><img src={''} alt="Uploaded Image" width="100" height="100" /></TableCell>
+                <TableCell align="center"><img src={''} alt="Result" width="100" height="100" />
+                </TableCell>
                 {/* <TableCell align="right">{row.Result}</TableCell> */}
               </TableRow>
             ))}

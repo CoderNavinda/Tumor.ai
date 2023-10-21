@@ -5,6 +5,10 @@ import DropFileInput from '../components/drop-file-input/DropFileInput';
 import { Button } from '@mui/base/Button';
 import InputFileUpload from '../components/mrisection/fileupload';
 import React, { useState } from 'react';
+import { collection, getDocs,addDoc,serverTimestamp,updateDoc } from "firebase/firestore";
+import {firebaseApp} from '../firebase';
+import { getAuth} from 'firebase/auth';
+import {getFirestore} from "firebase/firestore";
 import axios from 'axios';
 import ResultModal from '../components/mrisection/resultModal';
 function Braintumor() {
@@ -84,13 +88,14 @@ function Braintumor() {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   };
-  
+
   
   const onFileChange = (files) => {
     // Handle file changes here if needed
   };
     const [uploadedImage, setUploadedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
+    const[docRef,setDocRef]=useState(null);
   
     const handleFileChange = (event) => {
       const file = event.target.files[0];
@@ -100,13 +105,16 @@ function Braintumor() {
     const handleUploadedImage = (imagePath) => {
       setUploadedImage(imagePath)
       console.log('Received image path in parent component:', imagePath);
+      
       // You can set the image path in the parent component's state or perform any other necessary actions.
     };
 
 
 
-    const handleUpload = () => {
+    async function handleUpload () {
       if (selectedFile) {
+
+        
         // Create a FormData object to send the file to the backend
         const formData = new FormData();
         formData.append('file', selectedFile);
@@ -119,6 +127,7 @@ function Braintumor() {
             const segmentedImagePath = response.data['segmented_image_path'];
             console.log('Segmented image path:', segmentedImagePath);
             setUploadedImage(segmentedImagePath);
+            
           })
           .catch((error) => {
             // Handle error
@@ -128,7 +137,7 @@ function Braintumor() {
         // Handle case where no file is selected
         console.error('No file selected.');
       }
-    };
+    }
 
   
   return (

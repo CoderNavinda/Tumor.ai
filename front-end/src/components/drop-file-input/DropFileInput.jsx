@@ -5,10 +5,17 @@ import './drop-file-input.css';
 
 import { ImageConfig } from '../../assets/index'; 
 import uploadImg from '../../assets/cloud-upload-regular-240.png';
+import { collection, getDocs,addDoc,serverTimestamp,updateDoc } from "firebase/firestore";
+import {firebaseApp} from '../../firebase';
+import { getAuth} from 'firebase/auth';
+import {getFirestore} from "firebase/firestore";
 
 const DropFileInput = props => {
 
     const wrapperRef = useRef(null);
+    const auth= getAuth(firebaseApp);
+    const user = auth.currentUser;
+    const db=getFirestore(firebaseApp);
 
     const [fileList, setFileList] = useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);
@@ -29,7 +36,14 @@ const DropFileInput = props => {
         
     }
 
-    const sendFileToBackend = (file) => {
+    async function  sendFileToBackend  (file) {
+        const docRef= await addDoc(collection(db, 'history'), {
+            userId: user.uid, 
+            predictionType: 'Brain Tumor', 
+          imageUrl: '',
+          segmentedUrl:'', // Placeholder for now; we'll update it
+          uploadDate: serverTimestamp(), });
+          console.log('Image uploaded to Firestore with document ID:', docRef.id);
         const formData = new FormData();
         formData.append('file', file);
 
@@ -41,11 +55,23 @@ const DropFileInput = props => {
         })
         .then((response) => {
             // Handle the response from the backend (e.g., display a success message)
-            console.log('File uploaded successfully', response.data);
+            console.log('File uploaded successfully helloww', response.data);
             const segmentedImagePath = response.data['segmented_image_path'];
             console.log('Segmented image path:', segmentedImagePath);
+            console.log('file path:', response.data['file_path'])
             setUploadedImage(segmentedImagePath);
             props.onFileChange(segmentedImagePath);
+            const imageUrl=response.data['file_path'];
+            const segmentedUrl=response.data['segmented_image_path'];
+            updateDoc(docRef, {
+              imageUrl: imageUrl,
+              segmentedUrl:segmentedUrl,
+            }).then(() => {
+              console.log('Image URL updated in Firestore');
+            })
+            .catch((error) => {
+              console.error('Error updating document:', error);
+            });
         })
         .catch((error) => {
             // Handle any errors that occurred during the upload
