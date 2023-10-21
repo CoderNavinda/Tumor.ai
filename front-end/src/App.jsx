@@ -64,7 +64,7 @@ function App() {
       <Route path="/results" element={<Results />} />
       <Route path="/question" element={<Question />} />
       <Route path="/history" element={<History />} />
-      <Route path="/uploadimage" element={<SkinCancer />} />
+      <Route path="/skincancer" element={<SkinCancer />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/braintumor" element={<Braintumor />} />
     </Routes>

@@ -14,7 +14,7 @@ def upload_skin_predict():
     if request.method=='POST':
         if 'file' not in request.files:
             return jsonify({'error': 'No file provided'}), 400
-        image_file = request.files['image']
+        image_file = request.files['file']
 
 
         if image_file.filename == '':
