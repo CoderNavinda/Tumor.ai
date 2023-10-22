@@ -6,7 +6,7 @@ import { Button } from '@mui/base/Button';
 import InputFileUpload from '../components/mrisection/fileupload';
 import React, { useState } from 'react';
 import axios from 'axios';
-import ResultModal from '../components/mrisection/resultModal';
+import ResultModal from '../components/skincancer/skinModal';
 function SkinCancer() {
   const containerStyle = {
     position: 'absolute',
@@ -90,7 +90,9 @@ function SkinCancer() {
     // Handle file changes here if needed
   };
     const [uploadedImage, setUploadedImage] = useState(null);
+    const [uploadedImage_2, setUploadedImage_2] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
+    
   
     const handleFileChange = (event) => {
       const file = event.target.files[0];
@@ -116,9 +118,11 @@ function SkinCancer() {
           .then((response) => {
             // Handle success
             console.log('File uploaded successfully:', response.data);
-            const segmentedImagePath = response.data['segmented_image_path'];
-            console.log('Segmented image path:', segmentedImagePath);
-            setUploadedImage(segmentedImagePath);
+            const SkinResult = response.data['segmented_image_path'];
+            const SkinResult_2 = response.data['result'];
+            console.log(SkinResult_2);
+            setUploadedImage(SkinResult);
+            setUploadedImage_2(SkinResult_2);
           })
           .catch((error) => {
             // Handle error
@@ -172,7 +176,7 @@ function SkinCancer() {
       </div>
      
      </Container>
-     <ResultModal open={uploadedImage !== null} onClose={() => setUploadedImage(null)} imageSrc={`http://localhost:12000/${uploadedImage}`} />
+     <ResultModal open={uploadedImage !== null} onClose={() => setUploadedImage(null)} imageSrc={`http://localhost:12000/${uploadedImage}`} resultSRC={uploadedImage_2} />
 
      {/* {uploadedImage && (
         <div style={{ textAlign: 'center' }}>

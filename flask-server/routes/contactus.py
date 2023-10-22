@@ -34,11 +34,15 @@ def add_contactus():
     global smtp_server
     try:
 
-        # Extract user input data
-        user_name = 'navinda'
-        user_email = 'navinda.20@cse.mrt.ac.lk'
-        user_message = 'test message'
+        # # Extract user input data
+        # user_name = 'navinda'
+        # user_email = 'navinda.20@cse.mrt.ac.lk'
+        # user_message = 'test message'
+        data = request.get_json()  # Get JSON data from the POST request
 
+        user_name = data.get('name')
+        user_email = data.get('email')
+        user_message = data.get('message')
         # Check if any of the fields are missing
         if not user_name or not user_email or not user_message:
             return jsonify({'error': 'Incomplete data provided'}), 400
@@ -54,7 +58,7 @@ def add_contactus():
         email_msg['From'] = smtp_username
         email_msg['To'] = user_email
         email_msg['Subject'] = subject
-        email_msg.attach(MIMEText(message, 'plain'))
+        email_msg.attach(MIMEText(message + '\n'+'\n' + user_message, 'plain'))
 
         # Create SMTP server session
         smtp_server = smtplib.SMTP(smtp_server, smtp_port)

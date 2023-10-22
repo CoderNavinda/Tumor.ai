@@ -110,7 +110,7 @@ function Login() {
           </div>
           
           </div>
-          <a href="#">Forgot Password?</a>
+          <a href="/register">Forgot Password?</a>
           <input onClick={handleLogin} type="submit" className="btn" value="Login" />
          
         </form>

@@ -21,12 +21,14 @@ def upload_skin_predict():
             return jsonify({'error': 'No selected file'}), 400
         
         if image_file:
+            load_model()
             image_location = os.path.join("./static",image_file.filename) 
             image_file.save(image_location) 
 
             image = Image.open(image_file)
             image = preprocess_image(image)
             prediction = model.predict(image)
+            print(prediction)
             if prediction[0][0] > 0.5:
                 result = 'Malignant'
             else:

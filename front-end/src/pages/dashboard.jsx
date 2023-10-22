@@ -46,14 +46,16 @@ function Dashboard() {
           <Card sx={{ maxWidth: 345, marginRight: 5, marginBottom:3,marginLeft:2 }}>
             <CardMedia sx={{ height: 400 }} image={Pp3} title="green iguana" />
             <CardContent>
+            <Link to='/skincancer'>
             <Typography gutterBottom variant="h5" component="div" className="green-button">
-                       Breast-Cancer Detection
+                       Skin Cancer Detection
                       </Typography>
 
-
+                      </Link>
               <Typography variant="body2" color="text.secondary" fontFamily={"Montserrat"}>
-              Our Breast Cancer Detection system is designed to assist medical professionals in the early detection of breast cancer
+              Our Skin Cancer Detection system is developed to aid healthcare professionals in the early detection of skin cancer
               </Typography>
+             
             </CardContent>
             <CardActions>
               
