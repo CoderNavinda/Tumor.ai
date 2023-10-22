@@ -120,10 +120,10 @@ width: 508px;
 select.input-11 option {
   font-size: 16px;
   font-family: "Montserrat-Bold", Helvetica;
-  color: #999; /* Change color to a grayish tone */
+  color: #999; 
 }
 select.input-11 option[value=""] {
-  display: none; /* Hide the option visually */
+  display: none; 
 }
 
 /*contact number*/
@@ -218,17 +218,7 @@ color: #fff;
 padding: 5px 10px;
 }
 
-p {
-  font-size: 18px; /* Adjust the font size */
-  color: white; /* Change the text color */
-  margin: 10px 0; /* Add margin to create spacing around the paragraph */
-  left: 20px;
-  width: 50px;
-  padding: 0; /* Remove any default padding */
-  line-height: 1.5; /* Set line height for better readability */
-  font-weight: bold; /* Make the text bold if desired */
-  text-align: center; /* Center-align the text */
-}
+
 .Regsub:hover {
 background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
 }

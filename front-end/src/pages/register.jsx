@@ -95,7 +95,6 @@ function Register() {
            key6 : formData.medicals,
            key7 : formData.title,
            key8: formData. confirm
-           
          };
        const FiredataRef = collection(fire_db,'users')
        try {
