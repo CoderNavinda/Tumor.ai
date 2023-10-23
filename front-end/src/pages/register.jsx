@@ -87,14 +87,14 @@ function Register() {
     
        try {
          const newData = {
-           key1: email,
-           key2: password,
+           key1: formData.email,
+           key2: formData.password,
            key3: formData.firstname,
            key4 : formData.lastname,
            key5: formData.contactno,
            key6 : formData.medicals,
            key7 : formData.title,
-           key8: formData. confirm
+           key8: formData.confirm
          };
        const FiredataRef = collection(fire_db,'users')
        try {
@@ -104,7 +104,7 @@ function Register() {
        } catch (e) {
          console.error('Error adding document: ', e);
        }
-       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
        const user = userCredential.user;
        console.log('User logged in:', user);
        navigate('/dashboard', { replace: true });

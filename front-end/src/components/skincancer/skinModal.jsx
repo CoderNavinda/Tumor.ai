@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CircularProgress from '@mui/material/CircularProgress';
 import './resultModal.css';
+import jsPDF from 'jspdf';
+
 
 const style = {
   position: 'absolute',
@@ -28,10 +30,15 @@ export default function ResultModal({ open, resultSRC, onClose, imageSrc }) {
   };
 
   const handleDownload = () => {
-    // Implement your download logic here
-    // You can use the `resultSRC` to download the image
+    // Create a new jsPDF instance
+    const pdf = new jsPDF();
+    
+    // Add the image to the PDF
+    pdf.addImage(imageSrc, 'JPEG', 10, 10, 180, 120); // You may need to adjust the dimensions
+    
+    // Save the PDF with a name
+    pdf.save('segmentation_result.pdf');
   };
-
   return (
     <div>
       <Modal

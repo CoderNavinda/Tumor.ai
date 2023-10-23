@@ -23,7 +23,7 @@ function Dashboard() {
       </div>
       <div className="child2">
         <div className="contentn">
-          <h2>Choose your health service</h2>
+          <h2>CHOOSE YOUR HEALTH SERVICE</h2>
         </div>
         <div className="content-child1" style={{ marginLeft: 230, padding: 10, marginRight: 70 }}>
           <Card sx={{ marginLeft: 2, maxWidth: 345, marginRight:5,marginBottom:3 }}>

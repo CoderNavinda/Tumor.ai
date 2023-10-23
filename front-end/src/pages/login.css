@@ -92,52 +92,54 @@ form{
 .i i{
 	transition: .3s;
 }
-.input-overlap > div{
-  position: relative;
-  height: 45px;
-}
-
-.input-overlap > div > h5{
-position: absolute;
-left: 10px;
-top: 50%;
-transform: translateY(-50%);
-color: #999;
-font-size: 18px;
-transition: .3s;
-}
-
-.input-overlap:before, .input-overlap:after{
-content: '';
-position: absolute;
-bottom: -2px;
-width: 0%;
-height: 2px;
-background-color: #1678f2;
-transition: .4s;
-}
-.input-overlap:before{
+.input-overlap > div {
+	position: relative;
+	height: 45px;
+  }
+  
+  .input-overlap > div > h5 {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+	line-height: 45px; /* Add this line */
+  }
+  
+  .input-overlap:before, .input-overlap:after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #1678f2;
+	transition: .4s;
+  }
+  
+  .input-overlap:before {
 	right: 50%;
-}
-
-.input-overlap:after{
+  }
+  
+  .input-overlap:after {
 	left: 50%;
-}
-
-.input-overlap.focus:before, .input-overlap.focus:after{
+  }
+  
+  .input-overlap.focus:before, .input-overlap.focus:after {
 	width: 50%;
-}
-
-.input-overlap.focus > div > h5{
+  }
+  
+  .input-overlap.focus > div > h5 {
 	top: -5px;
 	font-size: 15px;
-}
-
-.input-overlap.focus > .i > i{
-	color: b;
-}
-
-.input-overlap > div > input{
+  }
+  
+  .input-overlap.focus > .i > i {
+	color: #1678f2;
+  }
+  
+  .input-overlap > div > input {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -150,14 +152,16 @@ transition: .4s;
 	font-size: 1.2rem;
 	color: #555;
 	font-family: 'poppins', sans-serif;
-}
-.input-overlap.focus > .i > i{
+  }
+  
+  .input-overlap.focus > .i > i {
 	color: #1678f2;
-}
-
-.input-overlap.pass{
+  }
+  
+  .input-overlap.pass {
 	margin-bottom: 4px;
-}
+  }
+  
 
 a{
 	display: block;

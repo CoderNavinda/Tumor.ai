@@ -1,6 +1,6 @@
 /* Sidebar container */
 .sidebarnew {
-    width: 13vw;
+    width: 15.5vw;
     height: 100%;
     position: fixed;
     top: 0;
@@ -22,7 +22,7 @@
     width:13vw;
 
     font-size: 1.5rem;
-    margin-bottom: 140px; /* Add margin at the bottom to create space */
+    margin-bottom: 100px; /* Add margin at the bottom to create space */
   }
   .nav-linksnew2 a.active{
     color:#0a0d0d;
