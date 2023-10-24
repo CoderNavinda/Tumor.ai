@@ -2,6 +2,13 @@ from flask import Blueprint, jsonify, request
 import os
 from models.braintumor_segmentation.braintumor import *
 upload_bp = Blueprint('upload', __name__)
+from middleware.authentication import *
+
+# Register the authentication middleware
+upload_bp.before_request(authenticate_user)
+
+
+
 
 
 

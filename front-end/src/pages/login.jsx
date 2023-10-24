@@ -49,21 +49,26 @@ function Login() {
   };
 
   const [emailError, setEmailError] = useState('');
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      const idToken = await user.getIdToken();
+  
+      // Make an API request to your Flask server to notify it of the user's login
+      // You can use a library like Axios to make the request.
+      // Include the idToken in the request headers.
+      await axios.post('http://127.0.0.1:12000/api/login', { idToken });
+  
       console.log('User logged in:', user);
       navigate('/dashboard', { replace: true });
     } catch (error) {
       console.error('Login error:', error.message);
-      alert('invalid credentials');
+      alert('Invalid credentials');
     }
-    
   };
-
+  
   //===============================================================================================================
   return (
     <div className="login-1">
