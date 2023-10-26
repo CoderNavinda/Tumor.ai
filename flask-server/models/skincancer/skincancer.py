@@ -12,12 +12,12 @@ model =None
 def load_model():
     global model
     # Load the model architecture from the JSON file
-    with open('resnet.json', 'r') as json_file:
+    with open('/home/ubuntu/Tumor.ai/flask-server/models/skincancer/resnet.json', 'r') as json_file:
         json_model = json_file.read()
     # Create the model
     model = model_from_json(json_model)
     # Load the weights from the H5 file
-    model.load_weights('resnet50.h5')
+    model.load_weights('/home/ubuntu/Tumor.ai/flask-server/models/skincancer/resnet50.h5')
 
 
 def preprocess_image(image):

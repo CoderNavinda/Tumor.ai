@@ -9,7 +9,7 @@ from email.mime.application import MIMEApplication
 
 
 
-with open('credentials.json', 'r') as credentials_file:
+with open('/home/ubuntu/Tumor.ai/flask-server/routes/credentials.json', 'r') as credentials_file:
     credentials = json.load(credentials_file)
 
 
