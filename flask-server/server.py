@@ -3,7 +3,6 @@ from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from dbserver import *
 from routes.contactus import contactus_bp 
 from routes.upload import upload_bp
 from routes.skincancer import skincancer_bp
