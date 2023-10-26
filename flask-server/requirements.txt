@@ -120,6 +120,9 @@ termcolor==2.3.0
 threadpoolctl==3.2.0
 tifffile==2023.8.30
 tornado==6.3.3
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
 tqdm==4.66.1
 traitlets==5.9.0
 tzdata==2023.3
