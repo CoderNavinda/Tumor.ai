@@ -4,10 +4,29 @@ import Col from 'react-bootstrap/Col';
 import DropFileInput from '../components/drop-file-input/DropFileInput';
 import { Button } from '@mui/base/Button';
 import InputFileUpload from '../components/mrisection/fileupload';
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import axios from 'axios';
 import ResultModal from '../components/mrisection/resultModal';
 function Braintumor() {
+
+  
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is authenticated
+    axios.get('http://127.0.0.1:12000/api/upload')
+      .then((response) => {
+        const isUserAuthenticated = response.data.authenticated;
+        console.log(response.data)
+        setAuthenticated(isUserAuthenticated);
+        console.log(authenticated)
+      })
+      .catch((error) => {
+        console.error('Authentication error:', error);
+      });
+  }, []);
+
+
   const containerStyle = {
     position: 'absolute',
     left: '5vw',
@@ -129,6 +148,16 @@ function Braintumor() {
         console.error('No file selected.');
       }
     };
+
+    if (!authenticated) {
+      return (
+        <div>
+          <p>You are not authenticated. Please log in to access this page.</p>
+          {/* You can add a login button or link here */}
+        </div>
+      );
+    }
+  
 
   
   return (

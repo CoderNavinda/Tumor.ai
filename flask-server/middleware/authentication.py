@@ -18,3 +18,8 @@ def authenticate_user():
     except ValueError as e:
         return jsonify({'error': str(e)}), 401
 
+def verify_user():
+    if 'user' not in g:
+        return jsonify({"authenticated": False})
+    else:
+        return jsonify({"authenticated": True})

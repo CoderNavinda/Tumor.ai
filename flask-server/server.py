@@ -12,6 +12,7 @@ from routes.contactus import contactus_bp
 from routes.upload import upload_bp
 from routes.skincancer import skincancer_bp
 from routes.login import login_bp
+from routes.logout import logout_bp
 
 
 app = Flask(__name__)
@@ -21,6 +22,7 @@ app.register_blueprint(contactus_bp)
 app.register_blueprint(upload_bp)
 app.register_blueprint(skincancer_bp)
 app.register_blueprint(login_bp)
+app.register_blueprint(logout_bp)
 
 
 #for segmentation

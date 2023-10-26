@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ResultModal from '../components/skincancer/skinModal';
 function SkinCancer() {
+
+
   const containerStyle = {
     position: 'absolute',
     left: '5vw',
@@ -135,6 +137,7 @@ function SkinCancer() {
     };
 
   
+
   return (
     <>
     <Container style={containerStyle}>
