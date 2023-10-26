@@ -126,7 +126,6 @@ torchvision==0.15.2
 tornado==6.3.3
 tqdm==4.66.1
 traitlets==5.9.0
-typing_extensions==4.5.0
 tzdata==2023.3
 uplink==0.9.7
 uritemplate==4.1.1
