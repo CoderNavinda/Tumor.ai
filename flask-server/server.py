@@ -15,8 +15,8 @@ app = Flask(__name__)
 CORS(app,supports_credentials=True)
 
 app.register_blueprint(contactus_bp)
-app.register_blueprint(upload_bp)
-app.register_blueprint(skincancer_bp)
+# app.register_blueprint(upload_bp)
+# app.register_blueprint(skincancer_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(logout_bp)
 
