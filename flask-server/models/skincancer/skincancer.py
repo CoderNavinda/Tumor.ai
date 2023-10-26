@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from PIL import Image
-import os
 import numpy as np
-import tensorflow as tf
 from keras.models import model_from_json
 
 

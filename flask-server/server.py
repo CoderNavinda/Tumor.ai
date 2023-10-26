@@ -1,13 +1,9 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
-from middleware.authentication import authenticate_user
-from middleware.request_logger import log_requests
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from dbserver import *
-import os
-from keras.models import model_from_json
 from routes.contactus import contactus_bp 
 from routes.upload import upload_bp
 from routes.skincancer import skincancer_bp

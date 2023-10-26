@@ -1,4 +1,3 @@
-from flask import Flask, request, jsonify, render_template
 from .dependencies import *
 from .unet import *
 from PIL import Image
