@@ -149,14 +149,14 @@ function Braintumor() {
       }
     };
 
-    if (!authenticated) {
-      return (
-        <div>
-          <p>You are not authenticated. Please log in to access this page.</p>
-          {/* You can add a login button or link here */}
-        </div>
-      );
-    }
+    // if (!//authenticated) {
+    //   return (
+    //     <div>
+    //       <p>You are not authenticated. Please log in to access this page.</p>
+    //       {/* You can add a login button or link here */}
+    //     </div>
+    //   );
+    // }
   
 
   
