@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CircularProgress from '@mui/material/CircularProgress';
-import './resultModal.css';
+import './ResultModal.css';
 import jsPDF from 'jspdf';
 
 
