@@ -9,9 +9,9 @@ UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-@upload_bp.route('/api/upload', methods=['GET'])
-def get_upload():
-    return verify_user()
+# @upload_bp.route('/api/upload', methods=['GET'])
+# def get_upload():
+#     return verify_user()
 
     
 
