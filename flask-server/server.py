@@ -11,8 +11,7 @@ from routes.logout import logout_bp
 
 
 app = Flask(__name__)
-CORS(app,supports_credentials=True)
-
+CORS(app, resources={r"/api/*": {"origins": "https://653b714b20753b2671914fae--sprightly-liger-99f225.netlify.app"}},supports_credentials=True)
 app.register_blueprint(contactus_bp)
 # app.register_blueprint(upload_bp)
 # app.register_blueprint(skincancer_bp)
