@@ -9,6 +9,7 @@ from routes.upload import upload_bp
 from routes.skincancer import skincancer_bp
 from routes.login import login_bp
 from routes.logout import logout_bp
+import os
 
 
 app = Flask(__name__)
@@ -35,6 +36,11 @@ firebase_admin.initialize_app(cred)
 
 
 
+@app.route('/static/<path:filename>')
+def test(filename):
+    print(filename)
+    print(os.path.join('static', filename))
+    return send_from_directory('static',  filename)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -45,5 +51,3 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=12000, debug=True)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
