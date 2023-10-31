@@ -12,9 +12,13 @@ import { IconArrowDownWrapper } from "./IconArrowDownWrapper";*/
 
 function Register() {
   //========================handle data======================================================================
-  const [formData, setFormData] = useState({
+  /*const [formData, setFormData] = useState({
     contactno:'',
     firstname:'',lastname:'',medicals:'',title:'',confirm:''
+  });*/
+  const [formData, setFormData] = useState({
+    contactno:'',experience:'',specialization:'',
+    firstname:'',lastname:'',medicals:'',hospital:'',country:''
   });
 
   const navigate = useNavigate();
@@ -62,6 +66,8 @@ function Register() {
       setCurrentError('');
     }
   }
+
+  
    //==========================================hande firebase=================================================================
 
    // Initialize Firebase
@@ -79,6 +85,10 @@ function Register() {
      validateContact();
      validateEmail();
      validatePasswordMatch();
+     /*firebaseApp.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+      console.log(u);
+     }).catch((err) //here I stopped
+     )*/
      
      if (currentError) {
       setShowError(true);
@@ -87,27 +97,44 @@ function Register() {
     
        try {
          const newData = {
-           key1: formData.email,
-           key2: formData.password,
-           key3: formData.firstname,
-           key4 : formData.lastname,
-           key5: formData.contactno,
-           key6 : formData.medicals,
-           key7 : formData.title,
-           key8: formData.confirm
+           Email: formData.email,
+            password: password,
+           Firstname: formData.firstname,
+           Lastname : formData.lastname,
+           Contact_no: formData.contactno,
+           Medicals : formData.medicals,
+           Title : formData.title, 
+           country : formData.country,
+           hospital:formData.hospital,
+           experience:formData.experience,
+
+           
          };
-       const FiredataRef = collection(fire_db,'users')
-       try {
-         const docRef = await addDoc(FiredataRef, newData);
-         console.log('Document written with ID: ', docRef.id);
          
-       } catch (e) {
-         console.error('Error adding document: ', e);
-       }
-       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-       const user = userCredential.user;
+         const FiredataRef = collection(fire_db, 'registration');
+
+         // Create a user account
+         const userCredential = await createUserWithEmailAndPassword(
+           auth,
+           formData.email,
+           formData.password
+         );
+     
+         // User is registered, and you can access the user's UID from userCredential
+     
+         // Write user data to Firestore with the user's UID as the document ID
+         await addDoc(FiredataRef, {
+           ...newData,
+           userId: userCredential.user.uid,
+         });
+     
+         console.log('User logged in:', userCredential.user);
+         navigate('/login', { replace: true });
+
+      // User is registered. Now sign them in.
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
        console.log('User logged in:', user);
-       navigate('/dashboard', { replace: true });
+       navigate('/login', { replace: true });
        
  
      } catch (error) {
@@ -123,21 +150,21 @@ function Register() {
     <div className="registeration">
       
       <div onSubmit={handleRegister} className="form" >
-      <div className="rectangle"/>
-        <div className="overlap-group">
-          <div className="rectangle-1" /*white rectangle*//>
-          <select className="input-11" type="text" name="title" placeholder="Title"  value={formData.title} onChange={handleChange}>
+      <div className="Regrectangle"/>
+        <div className="Regoverlap-group">
+          <div className="Regrectangle-1" /*white rectangle*//>
+          <select className="Reginput-11" type="text" name="title" placeholder="Title"  value={formData.title} onChange={handleChange}>
               <option value="" disabled selected>Title</option>
               <option value="Mr.">Mr.</option>
               <option value="Mrs.">Mrs.</option>
               <option value="Miss">Miss.</option>
               <option value="Miss">Not willing to say</option>
             </select> 
-          <input className="input-1" type="text" name="firstname" placeholder="First Name" 
+          <input className="Reginput-1" type="text" name="firstname" placeholder="First Name" 
           value={formData.firstname} onChange={handleChange} required  />
-          <input className="input-2" type="text" name="lastname" placeholder="Last Name" 
+          <input className="Reginput-2" type="text" name="lastname" placeholder="Last Name" 
           value={formData.lastname} onChange={handleChange} required  />
-          <select className="input-7" type="text" name="medicals" placeholder="Medical specializations" 
+          <select className="Reginput-7" type="text" name="medicals" placeholder="Medical specializations" 
             value={formData.medicals} onChange={handleChange} >
               <option value="" disabled selected>Medical specializations</option>
               <option value="Pathologist">Pathologist</option>
@@ -149,7 +176,7 @@ function Register() {
               <option value="Laboratory Technician">Laboratory Technician</option>
           </select>
 
-          <input className="input-6" type="text" name="contactno" placeholder="Contact Number" 
+          <input className="Reginput-6" type="text" name="contactno" placeholder="Contact Number" 
           value={formData.contactno} onChange={handleChange} onBlur={validateContact} required  />
           {/*showError && (
               <ErrorPopup
@@ -161,9 +188,12 @@ function Register() {
                 onClose={() => setShowError(false)} // Close the popup when the "Close" button is clicked
               />
               )*/}
-          <input className="input-4" type="text" name="email" placeholder="Email" value={formData.email} 
+          <input className="Reginput-4" type="text" name="email" placeholder="Email" value={formData.email} 
           onChange={(e) => setFormData({ ...formData, email: e.target.value })} onBlur={validateEmail}required  />
-            {/*showError && (
+            {/*
+             <input className="input-4" type="text" name="email" placeholder="Email" value={formData.email} 
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })} onBlur={validateEmail}required  />
+          showError && (
               <ErrorPopup
                 message={currentError=='email'
                 ? 'Please correct the email address'
@@ -171,10 +201,10 @@ function Register() {
                 onClose={() => setShowError(false)}
               />
             )*/}
-          <input className={`input-9 ${currentError === 'password' ? 'error' : ''}`} 
-            type="password" name="pass" placeholder="Password" value={formData.pass} 
+          <input className={`Reginput-9 ${currentError === 'password' ? 'error' : ''}`} 
+            type="password" name="pass" placeholder="Password" value={formData.password} 
             onChange={(e) =>  setFormData({ ...formData, password: e.target.value })}required  />
-          <input className={`input-10 ${currentError === 'password' ? 'error' : ''}`}
+          <input className={`Reginput-10 ${currentError === 'password' ? 'error' : ''}`}
             type="password" name="confirm" placeholder="Confirm Password" 
             value={formData.confirm} onChange={handleChange} onBlur={validatePasswordMatch} required  />
             {/*showError && (
@@ -198,7 +228,7 @@ function Register() {
                 ? 'Please Enter a valied contact number'
                 : currentError === 'password'
                 ? 'Password confirmation does not match'
-                : 'An error occurred during registration.'
+                : 'Password is not unique.'
             }
             onClose={() => setShowError(false)}
           />
@@ -208,3 +238,53 @@ function Register() {
 }
 
 export default Register;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

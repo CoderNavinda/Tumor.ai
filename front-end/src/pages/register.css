@@ -30,7 +30,7 @@ font-weight: bolder;
 color: black;
 }
 /*total page*/ 
-.registeration .overlap-group {
+.registeration .Regoverlap-group {
   height: 820px;
   left: 598px;
   position: relative;
@@ -40,8 +40,8 @@ color: black;
   flex-direction: row;
   gap: 30px;}
 
-.registeration .rectangle {
-  background-image: url('https://www.levinlaw.com/sites/default/files/images/hernia-mesh-litigation_0.jpg');
+.registeration .Regrectangle {
+  background-image: url(./hernia-mesh-litigation_0.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0px;
@@ -53,7 +53,7 @@ color: black;
   top: 50px;
   width: 600px;
 }
-.registeration .rectangle-1 {
+.registeration .Regrectangle-1 {
   background-color: transparent;
   backdrop-filter:blur(20px);
   opacity: 0.9;
@@ -68,7 +68,7 @@ color: black;
 }
 
 /*first name*/
-.registeration .input-1{
+.registeration .Reginput-1{
 background-color: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -82,7 +82,7 @@ width: 240px;
 }
 
 /*last name*/
-.registeration .input-2{
+.registeration .Reginput-2{
 background-color: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -95,7 +95,7 @@ top: 120px;
 width: 230px;
 }
 /*title*/
-.registeration .input-11 {
+.registeration .Reginput-11 {
 background-color: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -117,17 +117,17 @@ width: 508px;
   margin-left: 10px;
   font-weight: 500;
 }
-select.input-11 option {
+select.Reginput-11 option {
   font-size: 16px;
   font-family: "Montserrat-Bold", Helvetica;
-  color: #999; 
+  color: #999; /* Change color to a grayish tone */
 }
-select.input-11 option[value=""] {
-  display: none; 
+select.Reginput-11 option[value=""] {
+  display: none; /* Hide the option visually */
 }
 
 /*contact number*/
-.registeration .input-6 {
+.registeration .Reginput-6 {
 background: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -143,7 +143,7 @@ width: 508px;
 
 
 /*medical specialization*/
-.registeration .input-7 {
+.registeration .Reginput-7 {
 background-color: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -157,7 +157,7 @@ width: 508px;
 }
 
 /*password*/
-.registeration .input-9 {
+.registeration .Reginput-9 {
 background: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -171,7 +171,7 @@ font-size: 16px;
 width: 508px;
 }
 /*confirm password*/
-.registeration .input-10 {
+.registeration .Reginput-10 {
 background:#ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -186,7 +186,7 @@ width: 508px;
 }
 
 /*email*/
-.registeration .input-4  {
+.registeration .Reginput-4  {
 background: #ffffff;
 border: 1px solid;
 border-radius: 10px;
@@ -218,7 +218,17 @@ color: #fff;
 padding: 5px 10px;
 }
 
-
+p {
+  font-size: 18px; /* Adjust the font size */
+  color: white; /* Change the text color */
+  margin: 10px 0; /* Add margin to create spacing around the paragraph */
+  left: 20px;
+  width: 50px;
+  padding: 0; /* Remove any default padding */
+  line-height: 1.5; /* Set line height for better readability */
+  font-weight: bold; /* Make the text bold if desired */
+  text-align: center; /* Center-align the text */
+}
 .Regsub:hover {
 background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
 }
@@ -264,7 +274,7 @@ background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.7
 	
 
 
-  .overlap-group{
+  .Regoverlap-group{
     display: flex; /* Change to flex display */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
